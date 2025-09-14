@@ -35,7 +35,8 @@
         </p>
     </footer>
 
-    <scripttt>
+    <!-- her var <script> skrevet feil. det sto <scripttt> med 3 t,er -->
+    <script>
         //Variabel with company name
         const company = "Programmeriet"
 
@@ -47,7 +48,8 @@
         ]
 
         //Secret keys to access url and images
-        let images_folder = "img
+        //strengen til "img var ikke fulført, den manglet den siste " etter img
+        let images_folder = "img"
         let secret_key = 0
         let ak_key
         
@@ -59,7 +61,8 @@
             ak_key = secret_key + 1
         }
         const safe_images_folder = images_folder += ak_key
-        console.logg("Image folder: " + safe_images_folder)
+        console.log("Image folder: " + safe_images_folder)
+        //console.logg skrevet feil med en for mye g i .log
 
         let HTML_employees = ""
 
@@ -71,8 +74,8 @@
                     <p>${e.position} | Kontor: ${e.office}</p>
                     <p>${e.email}</p>
                 </article>`)
-
-                document.getElementbyId("employee_list").innerHTML = HTML_employeeees
+                //getElementbyId skrevet med liten b istedet for ById og HTML_empoyeeees skrevet med 2 for mye e'er 
+                document.getElementById("employee_list").innerHTML = HTML_employees
         }
 
         //System prints
