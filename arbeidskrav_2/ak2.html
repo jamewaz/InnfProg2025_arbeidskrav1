@@ -16,26 +16,59 @@
     <p>Finnes ordet "problemløsning" i Programmeringsord-arrayen? <span id="problemlosning_sjekk"></span></p>
     <h2>Problem 3</h2>
     <p>Gjennomsnittet av tallene i tall_array_en er <span id="avg_array_one"></span></p>
-    <p>Gjennomsnittet av tallene i tall_array_to er <span id="avg_array_one"></span></p>
+    <p>Gjennomsnittet av tallene i tall_array_to er <span id="avg_array_two"></span></p>
+    <!-- var skrevet samme to ganger, måtte rette span id="avg_array_one" til avg_array_two -->
 
     <script>
         //PROBLEM 1
         const hexadecimal_characters = "ABCDEF1234567890"
         const hexadecimal_characters_array = Array.from(hexadecimal_characters)
-        let random_color_code = "#"
-        
         //Din kode for å løse problem 1 her.
+        //lagt til function over let for og definere koden
+        function generateRandomHexColor() {
+            let random_color_code = "#"
+            while (random_color_code.length < 7){
+                random_color_code += hexadecimal_characters[Math.floor(Math.random() * hexadecimal_characters_array.length)]
+             
+            }
+            return random_color_code
+        }
+
+        // Skriver ut en tilfeldig fargekode
+        document.getElementById('random_color').textContent = generateRandomHexColor()
+        
 
         //PROBLEM 2
         const programming_words = ["variabel","funksjon","array","objekt","loop","betingelse","klasse","rekursjon","algoritme","kompilator"]
 
         //Din kode for å løse problem 2 her.
+          function finnesOrd(word) {
+            // Retunerer ordet Ja hvis ordet finnes, retunerer ordet Nei om ordet ikke finnes
+            return programming_words.includes(word) ? "Ja" : "Nei"
+        }
+
+        document.getElementById('betingelse_sjekk').textContent = finnesOrd('betingelse')
+        document.getElementById('algoritme_sjekk').textContent = finnesOrd('algoritme')
+        document.getElementById('problemlosning_sjekk').textContent = finnesOrd('problemløsning')
 
         //PROBLEM 3
         const tall_array_en = [9, 13, 5, 62, 11, 6, 28, 31, 17]
         const tall_array_to = [23, 76, 88, 13, 56, 90, 42]
 
         //Din kode for å løse problem 3 her.
+        function finnGjennomsnitt(array) {
+        if (array.length === 0) return 0;
+         const sum = array.reduce((acc, tall) => acc + tall, 0);
+         return sum / array.length;
+        }
+
+        const gjennomsnittEn = finnGjennomsnitt(tall_array_en);
+        const gjennomsnittTo = finnGjennomsnitt(tall_array_to);
+
+        
+    
+        document.getElementById('avg_array_one').textContent = gjennomsnittEn.toFixed(2);
+        document.getElementById('avg_array_two').textContent = gjennomsnittTo.toFixed(2);
     </script>
 </body>
 </html>
