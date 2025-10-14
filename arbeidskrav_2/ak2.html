@@ -52,10 +52,13 @@
         const tall_array_to = [23, 76, 88, 13, 56, 90, 42]
 
         //Din kode for å løse problem 3 her.
-        const gjennomsnitt = arr => (arr.reduce((sum, tall) => sum + tall) / arr.length).toFixed(2);
+        function finnGjennomsnitt(array) {
+            const sum = array.reduce((akk, tall) => akk + tall, 0);
+            return (sum / array.length).toFixed(2);
+        }
 
-        document.querySelector("#avg_array_one").textContent = gjennomsnitt(tall_array_en);
-        document.querySelector("#avg_array_two").textContent = gjennomsnitt(tall_array_to);
+        document.getElementById("avg_array_one").textContent = finnGjennomsnitt(tall_array_en);
+        document.getElementById("avg_array_two").textContent = finnGjennomsnitt(tall_array_to);
     </script>
 </body>
 </html>
