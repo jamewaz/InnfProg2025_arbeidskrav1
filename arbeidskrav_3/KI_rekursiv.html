@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rekursive funksjoner i JavaScript</title>
+</head>
+<body>
+    <h1>Rekursiv utskrift av tall</h1>
+    <ul id="numberList">
+        <li>Tall vil skrives ut her.</li>
+    </ul>
+
+    <script>
+       
+        function numberSelector() {
+            // Din kode her
+            const list = document.getElementById("numberList");
+
+            // generer tilfeldig tall mellom 1 og 9
+            const randomNumber = Math.floor(Math.random() * 9) + 1;
+
+            const li = document.createElement("li");
+            li.textContent = `Tallet er: ${randomNumber}`;
+            list.appendChild(li);
+
+            // sjekk om vi skal stoppe
+            if (randomNumber === 4 || randomNumber === 7) {
+                const stopLi = document.createElement("li");
+                stopLi.textContent = "Rekursjonen stoppet (tallet var 4 eller 7).";
+                list.appendChild(stopLi);
+                return;
+            }
+
+            // vent litt før neste kall for å synliggjøre rekursjonen
+            setTimeout(numberSelector, 500);
+        }
+
+        // start funksjonen
+        numberSelector();
+        
+    </script>
+</body>
+</html>
