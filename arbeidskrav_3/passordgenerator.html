@@ -9,6 +9,40 @@
     <h1>Passordgenerator</h1>
     <!-- Felter for brukervalg her -->
 
+    <div>
+        <label for="passwordLength">Lengde på passord:</label>
+        <input type="number" id="passwordLength" min="8" max="32" value="12">
+    </div>
+
+    <div>
+        <label>
+            <input type="checkbox" id="includeLowercase" checked>
+            Små bokstaver
+        </label>
+    </div>
+
+    <div>
+        <label>
+            <input type="checkbox" id="includeUppercase" checked>
+            Store bokstaver
+        </label>
+    </div>
+
+    <div>
+        <label>
+            <input type="checkbox" id="includeNumbers">
+            Tall
+        </label>
+    </div>
+
+    <div>
+        <label>
+            <input type="checkbox" id="includeSymbols">
+            Spesialtegn
+        </label>
+    </div>
+
+    <button onclick="generatePassword()">Generer passord</button>
 
      <p>Ditt passord: <span id="generatedPassword"></span></p>
 
@@ -20,6 +54,39 @@
 
         function passwordgenerator(length, includeLowercase, includeUppercase, includeNumbers, includeSymbols) {
             /* Din kode her */
+            let characters = "";    
+            let password = "";
+            
+            // Legg til valgte tegntyper
+            if (includeLowercase) characters += lowercase;
+            if (includeUppercase) characters += uppercase;
+            if (includeNumbers) characters += numbers;
+            if (includeSymbols) characters += symbols;
+            
+            // Hvis ingen tegn er valgt, bruk lowercase som standard
+            if (characters.length === 0) {
+                characters = lowercase;
+            }
+            
+            // Generer passordet
+            for (let i = 0; i < length; i++) {
+                const randomIndex = Math.floor(Math.random() * characters.length);
+                password += characters[randomIndex];
+            }
+            
+            return password;
+        }
+
+        // Funksjon som kalles når knappen trykkes
+        function generatePassword() {
+            const length = parseInt(document.getElementById("passwordLength").value);
+            const includeLowercase = document.getElementById("includeLowercase").checked;
+            const includeUppercase = document.getElementById("includeUppercase").checked;
+            const includeNumbers = document.getElementById("includeNumbers").checked;
+            const includeSymbols = document.getElementById("includeSymbols").checked;
+            
+            const password = passwordgenerator(length, includeLowercase, includeUppercase, includeNumbers, includeSymbols);
+            document.getElementById("generatedPassword").textContent = password;
         }
      </script>
 </body>

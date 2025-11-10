@@ -14,17 +14,18 @@
     <script>
         /*
             Hva er en rekursiv funksjon?
+
+            --Ditt svar her. Husk kilder--
             
             Rekursiv funksjon er en funksjon som kaller seg selv som en del av sin egen kjøring.
             Det viktige for en rekursiv funksjon er at den har et stopp-punkt slik at den ikke ruller ut i uendlig kall og kræsjer når den kjøres.
             Kilder er lagt til ved dokumentasjonen
 
-            --Ditt svar her. Husk kilder--
         */
 
         function numberSelector() {
             // Din kode her
-        // Generer tilfeldig tall mellom 1 og 9
+            // Generer tilfeldig tall mellom 1 og 9
             const tilfeldigTall = Math.floor(Math.random() * 9) + 1
 
             // Hent liste-elementet
@@ -37,9 +38,9 @@
             // Legg til i listen
             numberList.appendChild(listItem)
 
-            // Hvis tallet er 4 eller 7, stopp rekursjonen
+            // Hvis tallet er 4 eller 7, stopper rekursjonen
             if (tilfeldigTall !== 4 && tilfeldigTall !== 7) {
-                // Kall funksjonen på nytt hvis vi ikke fikk 4 eller 7
+                // Kaller på funksjonen på nytt hvis ikke 4 eller 7 kom fram
                 numberSelector()
             }
         }
